@@ -1,9 +1,10 @@
 <?php
 
 use Tasks\Pipeline;
+use PHPUnit\Framework\TestCase;
 
 // FIRST TASK
-class PipelineTest extends \PHPUnit\Framework\TestCase {
+class PipelineTest extends TestCase {
     public function testMake1() {
         
         $finalFunction = Pipeline::make(
@@ -13,7 +14,7 @@ class PipelineTest extends \PHPUnit\Framework\TestCase {
         );
 
         $result = $finalFunction(3);
-        $this->assertEquals(5, $result);
+        $this->assertSame(5, $result);
     }
 
     public function testMake2() {
@@ -25,7 +26,7 @@ class PipelineTest extends \PHPUnit\Framework\TestCase {
         );
 
         $result = $finalFunction(3);
-        $this->assertEquals(5.5, $result);
+        $this->assertSame(5.5, $result);
     }
 
     public function testMake3() {
@@ -37,7 +38,6 @@ class PipelineTest extends \PHPUnit\Framework\TestCase {
         );
 
         $result = $finalFunction(3);
-        $this->assertEquals(6, $result);
+        $this->assertSame(6, $result);
     }
 }
-?>
