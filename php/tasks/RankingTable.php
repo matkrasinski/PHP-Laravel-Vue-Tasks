@@ -5,7 +5,7 @@ namespace Tasks;
 
 // THIRD TASK
 class RankingTable {
-    public $players = [];
+    public array $players;
 
     public function __construct($playerNames) {
         foreach ($playerNames as $name) {
@@ -13,7 +13,7 @@ class RankingTable {
         }
     }
 
-    public function recordResult($playerName, $score) {
+    public function recordResult($playerName, $score): void {
         $this->players[$playerName]->score += $score;
         $this->players[$playerName]->gamesPlayed++;
     }

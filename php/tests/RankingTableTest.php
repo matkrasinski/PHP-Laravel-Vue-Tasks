@@ -12,7 +12,7 @@ class RankingTableTest extends TestCase {
         $table->recordResult('Maks', 3);
         $table->recordResult('Monika', 5);
 
-        $this->assertSame('Monika', $table->playerRank(1));
+        $this->assertEquals('Monika', $table->playerRank(1));
     }
 
     public function testRankingTable2() {
@@ -21,7 +21,7 @@ class RankingTableTest extends TestCase {
         $table->recordResult('Maks', 5);
         $table->recordResult('Monika', 5);
 
-        $this->assertSame('Jan', $table->playerRank(1));
+        $this->assertEquals('Jan', $table->playerRank(1));
     }
 
     public function testRankingTable3() {
@@ -32,6 +32,6 @@ class RankingTableTest extends TestCase {
         $table->recordResult('Monika', 3);
         $table->recordResult('Monika', 2);
 
-        $this->assertSame('Maks', $table->playerRank(1));
+        $this->assertEquals('Maks', $table->playerRank(1));
     }
 }

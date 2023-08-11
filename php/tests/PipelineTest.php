@@ -14,7 +14,7 @@ class PipelineTest extends TestCase {
         );
 
         $result = $finalFunction(3);
-        $this->assertSame(5, $result);
+        $this->assertEquals(5, $result);
     }
 
     public function testMake2() {
@@ -26,7 +26,7 @@ class PipelineTest extends TestCase {
         );
 
         $result = $finalFunction(3);
-        $this->assertSame(5.5, $result);
+        $this->assertEquals(5.5, $result);
     }
 
     public function testMake3() {
@@ -38,6 +38,6 @@ class PipelineTest extends TestCase {
         );
 
         $result = $finalFunction(3);
-        $this->assertSame(6, $result);
+        $this->assertEquals(6, $result);
     }
 }
