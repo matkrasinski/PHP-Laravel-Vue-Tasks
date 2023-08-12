@@ -2,6 +2,7 @@
 
 namespace Tasks;
 
+// FOURTH TASK
 class ThesaurusDictionary {
 
     private array $dictionary;
