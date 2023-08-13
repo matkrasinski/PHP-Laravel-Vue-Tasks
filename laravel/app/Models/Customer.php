@@ -20,7 +20,7 @@ class Customer extends Model
     }
 
     public function cars(): BelongsToMany {
-        return $this->belongsToMany(Car::class, 'car_client')
+        return $this->belongsToMany(Car::class, 'car_customer')
             ->withPivot('is_using', 'start_time', 'end_time')
             ->withTimestamps();
     }
@@ -35,7 +35,7 @@ class Customer extends Model
 
     public function isUsingCar(Car $car) {
         return $this->cars->contains(function ($carItem) use ($car) {
-            return $carItem->id === $car->id && $carItem->pivot->is_using;
+            return $carItem->id === $car['id'] && $carItem->pivot->is_using;
         });
     }
 }
