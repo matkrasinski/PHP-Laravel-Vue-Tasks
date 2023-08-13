@@ -26,11 +26,17 @@ class Customer extends Model
     }
 
     public function assignCar(Car $car): void {
-        $this->cars()->attach($car, ['is_using' => true, 'start_time' => now()]);
+        $isCarAlreadyUsed = Customer::whereHas('cars', function ($query) use ($car) {
+            $query->where('car_id', $car['id']);
+            $query->where('is_using', 1);
+        })->exists();
+        if (!$isCarAlreadyUsed) {
+            $this->cars()->syncWithoutDetaching([$car['id'] => ['is_using' => true, 'start_time' => now(), 'end_time' => null]]);
+        }
     }
 
     public function releaseCar(Car $car): void {
-        $this->cars()->updateExistingPivot($car->id, ['is_using' => false, 'end_time' => now()]);
+        $this->cars()->updateExistingPivot($car['id'], ['is_using' => false, 'end_time' => now()]);
     }
 
     public function isUsingCar(Car $car) {
