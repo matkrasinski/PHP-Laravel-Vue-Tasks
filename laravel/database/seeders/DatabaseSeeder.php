@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Car;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Order;
@@ -25,5 +26,7 @@ class DatabaseSeeder extends Seeder
         foreach ($customers as $customer) {
             Order::factory(7)->create(['customer_id' => $customer->id]);
         }
+
+        Car::factory(100)->create();
     }
 }
