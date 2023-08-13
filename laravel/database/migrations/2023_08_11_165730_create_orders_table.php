@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("customer_id")->constrained()->onDelete("cascade");
             $table->dateTime("order_date");
-            $table->string("order_status");
+            $table->integer("order_status");
             $table->string("shipping_address");
             $table->float("total_amount");
             $table->string("notes");

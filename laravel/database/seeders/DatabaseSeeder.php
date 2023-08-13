@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($customers as $customer) {
-            Order::factory(3)->create(['customer_id' => $customer->id]);
+            Order::factory(7)->create(['customer_id' => $customer->id]);
         }
     }
 }
