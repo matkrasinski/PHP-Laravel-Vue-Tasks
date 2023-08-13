@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("notes")->nullable();
             $table->timestamps();
 
-            $table->foreignId("customer_id")->constrained()->onDelete("cascade");
+            $table->foreignId("customer_id")->constrained()->cascadeOnDelete();
         });
     }
 

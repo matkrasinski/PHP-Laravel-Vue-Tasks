@@ -18,8 +18,8 @@ return new class extends Migration
             $table->timestamp('end_time')->nullable();
             $table->timestamps();
 
-            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
-            $table->foreignId('car_id')->constrained()->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('car_id')->constrained()->cascadeOnDelete();
 
         });
     }
