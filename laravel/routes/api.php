@@ -24,9 +24,10 @@ Route::get('/customers/{customerId}', [CustomerController::class, 'show']);
 // Cars routes
 Route::get('/cars', [CarController::class, 'index']);
 
-// Cars Customers routes
+// Cars-Customers routes
 Route::post('/car-customer/{customerId}/assign/{carId}', [CarCustomerController::class, 'assignCar']);
 Route::post('/car-customer/{customerId}/release/{carId}', [CarCustomerController::class, 'releaseCar']);
+Route::delete('/car-customer/{customerId}/return/{carId}', [CarCustomerController::class, 'returnCar']);
 Route::get('/car-customer/{customerId}/is-using/{carId}', [CarCustomerController::class, 'isUsingCar']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -27,6 +27,15 @@ class CarCustomerController extends Controller
         return response()->json(['message' => 'Car released from customer successfully']);
     }
 
+    public function returnCar($customerId, $carId): JsonResponse {
+        $customer = Customer::findOrFail($customerId);
+        $car = Car::findOrFail($carId);
+
+        $customer->returnCar($car);
+
+        return response()->json(['message' => 'Customer has returned car']);
+    }
+
     public function isUsingCar($customerId, $carId): JsonResponse {
         $customer = Customer::findOrFail($customerId);
         $car = Car::findOrFail($carId);

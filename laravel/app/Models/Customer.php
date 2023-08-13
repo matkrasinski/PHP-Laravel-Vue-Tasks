@@ -39,6 +39,9 @@ class Customer extends Model
         $this->cars()->updateExistingPivot($car['id'], ['is_using' => false, 'end_time' => now()]);
     }
 
+    public function returnCar(Car $car): void {
+        $this->cars()->detach($car['id']);
+    }
     public function isUsingCar(Car $car) {
         return $this->cars->contains(function ($carItem) use ($car) {
             return $carItem->id === $car['id'] && $carItem->pivot->is_using;
