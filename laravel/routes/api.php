@@ -19,16 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 // Customers routes
 Route::get('/customers', [CustomerController::class, 'index']);
-Route::get('/customers/{customerId}', [CustomerController::class, 'show']);
+Route::middleware('check.customer.exists')->get('/customers/{customerId}', [CustomerController::class, 'show']);
 
 // Cars routes
 Route::get('/cars', [CarController::class, 'index']);
+Route::post('/cars/new', [CarController::class, 'store']);
+Route::middleware('check.car.exists')->delete('/cars/delete/{carId}', [CarController::class, 'destroy']);
 
 // Cars-Customers routes
-Route::post('/car-customer/{customerId}/assign/{carId}', [CarCustomerController::class, 'assignCar']);
-Route::post('/car-customer/{customerId}/release/{carId}', [CarCustomerController::class, 'releaseCar']);
-Route::delete('/car-customer/{customerId}/return/{carId}', [CarCustomerController::class, 'returnCar']);
-Route::get('/car-customer/{customerId}/is-using/{carId}', [CarCustomerController::class, 'isUsingCar']);
+Route::middleware(['check.car.exists', 'check.customer.exists'])->post('/car-customer/{customerId}/assign/{carId}', [CarCustomerController::class, 'assignCar']);
+Route::middleware(['check.car.exists', 'check.customer.exists'])->post('/car-customer/{customerId}/release/{carId}', [CarCustomerController::class, 'releaseCar']);
+Route::middleware(['check.car.exists', 'check.customer.exists'])->delete('/car-customer/{customerId}/return/{carId}', [CarCustomerController::class, 'returnCar']);
+Route::middleware(['check.car.exists', 'check.customer.exists'])->get('/car-customer/{customerId}/is-using/{carId}', [CarCustomerController::class, 'isUsingCar']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

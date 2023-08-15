@@ -18,7 +18,6 @@ class CustomerController extends Controller
             $query->orderBy('created_at', 'desc')->take(5);
         }])->find($customerId);
 
-
         $customerInfo->makeHidden(['employee_id', 'created_at', 'updated_at']);
         $customerInfo['employee']->makeHidden(['created_at', 'updated_at']);
 
