@@ -20,7 +20,6 @@ return new class extends Migration
 
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('car_id')->constrained()->cascadeOnDelete();
-
         });
     }
 
