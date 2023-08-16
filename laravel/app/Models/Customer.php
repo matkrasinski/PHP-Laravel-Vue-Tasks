@@ -11,6 +11,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Customer extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'phone_number',
+        'employee_id'
+    ];
+
     public function employee(): BelongsTo {
         return $this->belongsTo(Employee::class);
     }

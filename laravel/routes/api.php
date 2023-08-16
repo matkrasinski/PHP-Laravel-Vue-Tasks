@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Customers routes
 Route::get('/customers', [CustomerController::class, 'index']);
 Route::middleware('check.customer.exists')->get('/customers/{customerId}', [CustomerController::class, 'show']);
+Route::post('/customers/new', [CustomerController::class, 'store']);
 
 // Cars routes
 Route::get('/cars', [CarController::class, 'index']);
