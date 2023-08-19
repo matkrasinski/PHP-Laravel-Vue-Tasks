@@ -14,7 +14,11 @@
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone_number }}</td>
             <td>{{ customer.employee_id }}</td>
-            <input class="btn btn-primary col-8" type="button" value="Select"/>
+            <button @click="onChooseUser(customer.id)">
+                <a>
+                    Details
+                </a>
+            </button>
         </tr>
     </table>
 </template>
@@ -22,19 +26,30 @@
 import axios from 'axios'
 
 export default {
-  name: 'CustomersComponent.vue',
-  data() {
-    return {
-        customers: []
-    }
-  },
-  mounted() {
-    axios.get(`${this.API_URL}/customers`).then(res => {
-        this.customers = res.data
-    }).catch(error => {
-        console.log(error.message)
-    })
-  }
+    name: 'CustomersComponent.vue',
+    data() {
+        return {
+            customers: [],
+            currentUserId: 1
+        };
+    },
+    mounted() {
+        axios.get(`${this.API_URL}/customers`).then(res => {
+            this.customers = res.data;
+        }).catch(error => {
+            console.log(error.message);
+        });
+    },
+    methods: {
+        onChooseUser(id) {
+            this.$router.push({ name: 'details', params: {customerId: id} })
+        }
+    },  
 }
 
 </script>
+
+<style>
+    tr:nth-child(even) {background: rgb(241, 241, 241)}
+    tr:nth-child(odd) {background: #FFF}
+</style>
