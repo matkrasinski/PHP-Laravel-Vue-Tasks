@@ -1,5 +1,5 @@
 <template>
-    <table class="table align-middle">
+    <table class="container table align-middle">
         <tr>
             <th>First name</th>
             <th>Last name</th>
@@ -14,11 +14,7 @@
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone_number }}</td>
             <td>{{ customer.employee_id }}</td>
-            <button @click="onChooseUser(customer.id)">
-                <a>
-                    Details
-                </a>
-            </button>
+            <input class="btn btn-primary col-8" type="button" value="Select" @click="onChooseUser(customer.id)"/>
         </tr>
     </table>
 </template>

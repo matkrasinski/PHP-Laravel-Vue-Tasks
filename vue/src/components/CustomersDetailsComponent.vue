@@ -20,7 +20,7 @@
     </table>
 
     <h2>Last orders</h2>
-    <table class="table align-middle">
+    <table class="container">
         <table class="table align-middle">
         <tr>
             <th>Order ID</th>
