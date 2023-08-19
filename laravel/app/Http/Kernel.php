@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckCarExists;
 use App\Http\Middleware\CheckCustomerExists;
+use App\Http\Middleware\CheckEmployeeExists;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -65,7 +66,7 @@ class Kernel extends HttpKernel
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            ThrottleRequests::class.':api',
+            // ThrottleRequests::class.':api',
             SubstituteBindings::class
         ],
     ];
@@ -90,6 +91,7 @@ class Kernel extends HttpKernel
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
         'check.customer.exists' => CheckCustomerExists::class,
-        'check.car.exists' => CheckCarExists::class
+        'check.car.exists' => CheckCarExists::class,
+//        'check.employee.exists' => CheckEmployeeExists::class
     ];
 }
