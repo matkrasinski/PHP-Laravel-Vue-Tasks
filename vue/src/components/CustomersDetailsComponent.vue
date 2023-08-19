@@ -99,8 +99,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-    tr:nth-child(even) {background: rgb(241, 241, 241)}
-    tr:nth-child(odd) {background: #FFF}
-</style>
