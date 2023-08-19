@@ -6,6 +6,7 @@
             <th>Email</th>
             <th>Phone number</th>
             <th>Employee Id</th>
+            <th>Details</th>
         </tr>
         <tr v-for="customer in this.customers" :key="customer">
             <td>{{ customer.first_name }}</td>
@@ -13,6 +14,7 @@
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone_number }}</td>
             <td>{{ customer.employee_id }}</td>
+            <input class="btn btn-primary col-8" type="button" value="Select"/>
         </tr>
     </table>
 </template>
@@ -27,14 +29,12 @@ export default {
     }
   },
   mounted() {
-    axios.get(`http://localhost:8000/api/customers`).then(res => {
+    axios.get(`${this.API_URL}/customers`).then(res => {
         this.customers = res.data
     }).catch(error => {
         console.log(error.message)
     })
-
   }
-  
 }
 
 </script>
