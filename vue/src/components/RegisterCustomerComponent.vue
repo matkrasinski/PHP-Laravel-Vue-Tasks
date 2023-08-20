@@ -12,17 +12,36 @@
         <label for="phoneNumber"> Phone number : </label>
         <input type="text" class="form-control" v-model.trim="phoneNumber" id="phoneNumber" placeholder="Phone number">
 
-        <label for="email"> Email : </label>
-        <input type="text" class="form-control" v-model.trim="email" id="email" placeholder="Email">
-
-        // Customer id
+        <label for="employee">Employee : </label>
+            <select class="form-select" v-model.trim="employee" id="employee" >
+                <option selected></option>
+                <option v-for="employee in employees" :key="employee">
+                    {{ employee.first_name + " " + employee.last_name }}
+                </option>
+            </select>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'RegisterCustomerComponent.vue'
-
-
+    name: 'RegisterCustomerComponent.vue',
+    data() {
+        return {
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            employee: {},
+            employees: []   
+        }
+    },
+    mounted() {
+        this.$http.get(`${this.API_URL}/employees`).then(res => {
+            this.employees = res.data
+            console.log(this.employees)
+        }).catch(error => {
+            console.log(error.message);
+        });
+    }
 }
 </script>
