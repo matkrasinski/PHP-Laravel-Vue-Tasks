@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CarCustomerController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,10 @@ Route::middleware(['check.car.exists', 'check.customer.exists'])->post('/car-cus
 Route::middleware(['check.car.exists', 'check.customer.exists'])->post('/car-customer/{customerId}/release/{carId}', [CarCustomerController::class, 'releaseCar']);
 Route::middleware(['check.car.exists', 'check.customer.exists'])->delete('/car-customer/{customerId}/return/{carId}', [CarCustomerController::class, 'returnCar']);
 Route::middleware(['check.car.exists', 'check.customer.exists'])->get('/car-customer/{customerId}/is-using/{carId}', [CarCustomerController::class, 'isUsingCar']);
+
+// Employees routes
+Route::get('/employees', [EmployeeController::class, 'index']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
