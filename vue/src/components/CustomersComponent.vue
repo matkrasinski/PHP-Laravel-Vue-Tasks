@@ -1,4 +1,6 @@
 <template>
+
+<input class="btn btn-primary col-8" type="button" value="Register new customer" @click="onRegisterNewCustomer"/>
     <table class="container table align-middle">
         <tr>
             <th>First name</th>
@@ -14,7 +16,7 @@
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone_number }}</td>
             <td>{{ customer.employee_id }}</td>
-            <input class="btn btn-primary col-8" type="button" value="Select" @click="onChooseUser(customer.id)"/>
+            <input class="btn btn-secondary col-8" type="button" value="Select" @click="onChooseUser(customer.id)"/>
         </tr>
     </table>
 </template>
@@ -38,6 +40,9 @@ export default {
     methods: {
         onChooseUser(id) {
             this.$router.push({ name: 'details', params: {customerId: id} })
+        },
+        onRegisterNewCustomer() {
+            this.$router.push({name: 'register'})
         }
     },  
 }
