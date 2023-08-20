@@ -19,7 +19,6 @@
     </table>
 </template>
 <script>
-import axios from 'axios'
 
 export default {
     name: 'CustomersComponent.vue',
@@ -30,7 +29,7 @@ export default {
         };
     },
     mounted() {
-        axios.get(`${this.API_URL}/customers`).then(res => {
+        this.$http.get(`${this.API_URL}/customers`).then(res => {
             this.customers = res.data;
         }).catch(error => {
             console.log(error.message);

@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   name: 'CustomersDetailsComponent',
@@ -89,7 +88,7 @@ export default {
     }
   },
   mounted() {
-    axios.get(`${this.API_URL}/customers/${this.customerId}`).then(res => {
+    this.$http.get(`${this.API_URL}/customers/${this.customerId}`).then(res => {
         this.customer = res.data
         this.employee = this.customer.employee;
         this.lastOrders = this.customer.orders
